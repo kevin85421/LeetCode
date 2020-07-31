@@ -1,6 +1,7 @@
 # Array
 ## Q1: Remove Duplicates from Sorted Array
 *   My Solution is good enough
+*   Logic: Find the first elements with the same value
 ## Q2: Best Time to Buy and Sell Stock II
 ###  My Solution
 *   Flow
@@ -22,7 +23,7 @@
         | :-----| :----: | :----: |
         | valley | `(prices[i] < prices[i+1]) and (prices[i] < prices[i-1])` | `prices[i] < prices[i + 1]`|
         | peak | `(prices[i] > prices[i+1]) and (prices[i] > prices[i-1])` | `prices[i] > prices[i + 1]` |
-
+![color_logo_with_text](../Images/Q2_Approach2.png)
 ```java
 class Solution {
     public int maxProfit(int[] prices) {
@@ -46,7 +47,9 @@ class Solution {
 *   Approach 3: Simple One Pass
     * In this case, instead of looking for every peak following a valley, we can simply go on crawling over the slope and keep on adding the profit obtained from every consecutive transaction.
     * Better than Approach 2
-      * Easy to implement 
+      * Easy to implement
+
+![color_logo_with_text](../Images/Q2_Approach3.png) 
 ```java
 class Solution {
     public int maxProfit(int[] prices) {
