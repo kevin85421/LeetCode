@@ -62,3 +62,74 @@ class Solution {
     }
 }
 ```
+## Q3: Rotate Array
+### My Solution
+*   Cons: 
+    *   Time Complexity: Move ***iterStep*** steps at one time (`iterStep <= k`)
+    *   Space complexity is not O(1)
+### LeetCode Solution: [Link](https://leetcode.com/articles/rotate-array/)
+*   Approach 3: Using Cyclic Replacements
+    * ***k*** iterations: ***i-th*** iteration move all elements that satisfy `(index%k) == i` to correct positions
+    * Better than My Solution:
+      * Time Complexity: Move ***k*** steps at one time
+      * Space Complexity: `O(1)`
+
+![color_logo_with_text](../Images/Q3_Approach3.png)
+```python
+class Solution:
+    def rotate(self, nums: List[int], k: int) -> None:
+        n = len(nums)
+        k %= n
+        
+        start = count = 0
+        while count < n:
+            current, prev = start, nums[start]
+            while True:
+                next_idx = (current + k) % n
+                nums[next_idx], prev = prev, nums[next_idx]
+                current = next_idx
+                count += 1
+                
+                if start == current:
+                    break
+            start += 1
+```
+*   Approach 4: Using Reverse
+    * Pros: (1) Easy to implement (2) No extra space is used
+   
+![color_logo_with_text](../Images/Q3_Approach4.png)
+```python
+class Solution:
+    def reverse(self, nums: list, start: int, end: int) -> None:
+        while start < end:
+            nums[start], nums[end] = nums[end], nums[start]
+            start, end = start + 1, end - 1
+                
+    def rotate(self, nums: List[int], k: int) -> None:
+        n = len(nums)
+        k %= n
+
+        self.reverse(nums, 0, n - 1)
+        self.reverse(nums, 0, k - 1)
+        self.reverse(nums, k, n - 1)
+```
+## Q4: Contains Duplicate
+### My Solution
+*   My approach is the same as Approach #2
+*   Time Complexity: `O(nlogn)` (sorting)
+*   Space Complexity: `O(1)` (if **heapsort** is used)
+### LeetCode Solution: [Link](https://leetcode.com/articles/contains-duplicate/)
+*   Approach 3: Hash Table
+    *  Time Complexity: `O(n)`
+    *  Space Complexity: `O(n)`
+    *  Note: If ***n*** is not large enough, Approach 3 is possibly slower than Approach 2.
+```java
+public boolean containsDuplicate(int[] nums) {
+    Set<Integer> set = new HashSet<>(nums.length);
+    for (int x: nums) {
+        if (set.contains(x)) return true;
+        set.add(x);
+    }
+    return false;
+}
+```
