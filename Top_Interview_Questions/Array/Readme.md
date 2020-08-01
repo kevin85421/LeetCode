@@ -175,7 +175,7 @@ def singleNumber(self, nums):
 *   HashMap 
 *   Time Complexity: `O(n)`
 *   Space Complexity: `O(n)`
-### Follow Up
+### Follow Up: [Link](https://blog.csdn.net/CSerwangjun/article/details/103134862)
 *   What if the given array is already sorted?
     *  Two pointers
     *  Time Complexity: `O(m+n)` (`len(nums1) == m` & `len(nums2) == n`)
