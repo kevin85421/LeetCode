@@ -133,3 +133,53 @@ public boolean containsDuplicate(int[] nums) {
     return false;
 }
 ```
+## Q5: Single Number
+### My Solution
+*   Sorting + Traverse (Similar with Approach 2 in Q4)
+*   Time Complexity: `O(nlogn)` (sorting) --> X
+*   Space Complexity: `O(1)` (if **heapsort** is used)
+### LeetCode Solution: [Link](https://leetcode.com/articles/single-number/)
+*   Approach 2: Hash Table
+    *   Time Complexity: `O(n)`
+    *   Space Complexity: `O(n)` --> X
+*   Approach 3: Math
+    *   Concept: ` 2 * (a+b+c) - (a+a+b+b+c) = c`
+    *   Time Complexity: `O(n)`
+    *   Space Complexity: `O(n)` --> X
+```python
+class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        return 2 * sum(set(nums)) - sum(nums)
+```
+*   Approach 4: Bit Manipulation
+    * Concept: `a xor a = 0`, `a xor 0 = a` --> `a xor b xor a = (a xor a) xor b = 0 xor b = b`
+    * Time Complexity: `O(n)`
+    * Space Complexity: `O(1)`
+```python
+def singleNumber(self, nums):
+    """
+    :type nums: List[int]
+    :rtype: int
+    """
+    a = 0
+    for i in nums:
+        a ^= i
+    return a
+```
+## Q6: Intersection of Two Arrays II
+### My Solution:
+*   HashMap 
+*   Time Complexity: `O(n)`
+*   Space Complexity: `O(n)`
+### Follow Up
+*   What if the given array is already sorted?
+    *  Two pointers
+    *  Time Complexity: `O(m+n)` (`len(nums1) == m` & `len(nums2) == n`)
+    *  Space Complexity: `O(k)`  (`len(res) == k`)
+*   What if nums1's size is small compared to nums2's size?
+    *  Binary search
+    *  Time Complexity: `O(mlogn)` --> `O(mlogn) < O(m+n) because m << n`   
