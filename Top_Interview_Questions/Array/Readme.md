@@ -182,4 +182,23 @@ def singleNumber(self, nums):
     *  Space Complexity: `O(k)`  (`len(res) == k`)
 *   What if nums1's size is small compared to nums2's size?
     *  Binary search
-    *  Time Complexity: `O(mlogn)` --> `O(mlogn) < O(m+n) because m << n`   
+    *  Time Complexity: `O(mlogn)` --> `O(mlogn) < O(m+n) because m << n`
+## Q7: Plus One
+### My Solution:
+*   This problem is very easy, and my solution is good enough.
+## Q8: Move Zeros
+### My Solution
+*   My solution is similar with Approach 2.
+*   Time Complexity: `O(n)` --> However, the total number of operations are still sub-optimal. 
+*   Space Complexity: `O(1)`
+### LeetCode Solution: [Link](https://leetcode.com/articles/move-zeroes/)
+*   Approach 3: (Optimal)
+```c++
+void moveZeroes(vector<int>& nums) {
+    for (int lastNonZeroFoundAt = 0, cur = 0; cur < nums.size(); cur++) {
+        if (nums[cur] != 0) {
+            swap(nums[lastNonZeroFoundAt++], nums[cur]);
+        }
+    }
+}
+```
