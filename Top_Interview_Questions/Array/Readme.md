@@ -202,3 +202,29 @@ void moveZeroes(vector<int>& nums) {
     }
 }
 ```
+## Q9: Two Sum
+### My Solution
+* Sort + 2-pointer
+* Time Complexity: `O(nlogn)`
+* Space Complexity: `O(n)`
+### LeetCode Solution
+* Approach 3: One-pass Hash Table
+  * Time Complexity: `O(n)` (Each look up in the hash table costs only `O(1)` time)
+  * Space Complexity: `O(n)`
+```java
+public int[] twoSum(int[] nums, int target) {
+    Map<Integer, Integer> map = new HashMap<>();
+    for (int i = 0; i < nums.length; i++) {
+        int complement = target - nums[i];
+        if (map.containsKey(complement)) {
+            return new int[] { map.get(complement), i };
+        }
+        map.put(nums[i], i);
+    }
+    throw new IllegalArgumentException("No two sum solution");
+}
+```
+## Q10: Valid Sudoku
+### My Solution
+*  Check row, solumn and subbox separately (Good enough)
+*  Improvement: Replace List with HashTable (the cost of look up in HashTable is `O(1)`)
