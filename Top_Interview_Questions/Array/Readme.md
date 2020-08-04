@@ -1,4 +1,8 @@
 # Array
+## Overview
+*   **Easy:** Q1~Q11
+*   **Medium:** Q12
+*   **Worth it:** Q2, Q3, Q5, Q9, Q11, Q12
 ## Q1: Remove Duplicates from Sorted Array
 *   My Solution is good enough
 *   Logic: Find the first elements with the same value
@@ -228,3 +232,58 @@ public int[] twoSum(int[] nums, int target) {
 ### My Solution
 *  Check row, solumn and subbox separately (Good enough)
 *  Improvement: Replace List with HashTable (the cost of look up in HashTable is `O(1)`)
+## Q11: Rotate Image
+### Solution: [Link](https://blog.csdn.net/fuxuemingzhu/article/details/79451733)
+* Hint: Rotate 90 degrees (clockwise) = (symmetric to x-axis) + (symmetric to 45 degrees axis)
+## Q12: 3 Sum
+### Solution: [Link](https://www.youtube.com/watch?v=F4UKF07-tvo)
+* Hint: 
+  * Sort list
+  * Two pointer (j,k)
+* Skip duplicate
+  * (3Sum.py:16~23) Why ***j*** and ***k*** can be updated at the same time?
+    * (`tmp = nums[i] + nums[j] + nums[k] = 0` and ***i*** is fixed)
+    * If we just update ***j***, ***tmp*** will become positive. 
+    * If we just update ***k***, ***tmp*** will become negative.
+  * (3Sum.py:20~23)
+    * (20~21): Update ***j*** until `nums[j]` is the leftmost element of new number
+      * ex: [1,1,1,2,2,2,3,3,3], j = 1 --> (20~21) --> j = 3
+    * (22~23): Update ***k*** until `nums[k]` is the rightmost element of new number
+      * ex: [1,1,1,2,2,2,3,3,3], k = 8 --> (22~23) --> k = 5
+  * Update the variable to a new number. Why? (Is `nums[j_old] == nums[j_new]` invalid?)
+    * If `nums[j_old] == nums[j_new]` and ***i*** is fixed, the only possible solution is `nums[k_old] == nums[k_new]` and it will cause duplicate. (`[nums[i], nums[j_old], nums[k_old]` and `[nums[i], nums[j_new], nums[k_new]`)
+* Optimization:
+  * `nums[i] + nums[i+1] + nums[i+2] > 0` (smallest 3 elements)--> break
+  * `nums[i] + nums[len(nums)-2] + nums[len(nums)-1] < 0` --> continue
+  * Use variable: Method 1 is much faster than Method 2
+```python
+# method 1
+while j < k:
+    tmp = nums[i] + nums[j] + nums[k]
+    if (tmp == 0):
+        ans.append([nums[i],nums[j],nums[k]])
+        j += 1
+        k -= 1
+        while (j<k and nums[j] == nums[j-1]):
+            j += 1
+        while (j<k and nums[k] == nums[k+1]):
+            k -= 1
+    elif (tmp < 0):
+        j += 1
+    else:
+        k -= 1
+# method 2
+while j < k:
+    if ((nums[i] + nums[j] + nums[k]) == 0):
+        ans.append([nums[i],nums[j],nums[k]])
+        j += 1
+        k -= 1
+        while (j<k and nums[j] == nums[j-1]):
+            j += 1
+        while (j<k and nums[k] == nums[k+1]):
+            k -= 1
+    elif ((nums[i] + nums[j] + nums[k]) < 0):
+        j += 1
+    else:
+        k -= 1
+```
