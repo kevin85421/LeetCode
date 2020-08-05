@@ -2,7 +2,7 @@
 ## Overview
 *   **Easy:** Q1~Q11
 *   **Medium:** Q12
-*   **Worth it:** Q2, Q3, Q5, Q9, Q11, Q12
+*   **Worth it:** Q2, Q3, Q5, Q9, Q11, Q12, Q13
 ## Q1: Remove Duplicates from Sorted Array
 *   My Solution is good enough
 *   Logic: Find the first elements with the same value
@@ -287,3 +287,14 @@ while j < k:
     else:
         k -= 1
 ```
+## Q13: Set Matrix Zeroes
+### My Solution
+*   Hash Table: Record rows and columns that need to set zeroes
+    *  My Solution is very similar with Approach 1.
+*   Time Complexity: `O(mn)`
+*   Space Complexity: `O(m+n)`
+### LeetCode Solution: [Link](https://leetcode.com/articles/set-matrix-zeroes/)
+*   Approach 3: `O(1)` Space, Efficient Solution
+    *  `matrix[i][j] == 0` --> Set `matrix[i][0]` and `matrix[0][j]` to 0
+    *  If the first element of row or column (i.e. `matrix[i][0]` and `matrix[0][j]`) is equal to 0, it means that this row/column needs to set zeroes.
+    *  That is, the first row and first column is equivalent to the Hash Table in My Solution.
