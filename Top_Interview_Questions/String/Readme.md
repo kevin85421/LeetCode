@@ -2,7 +2,7 @@
 ## Overview
 *   **Easy:** Q1 ~ Q9
 *   **Medium:** Q10
-*   **Worth it:** Q2
+*   **Worth it:** Q2, Q11
 ## Q1: Reverse String
 *   This problem is very easy
 ## Q2: Reverse Integer
@@ -57,6 +57,11 @@ hash_table = defaultdict(int)
 for element in s:
     hash_table[element] += 1
 ```
+## Q4: Valid Anagram
+### My Solution (Good enough):
+*   Use the trick in Q3
+*   Time Complexity: `O(n)`
+*   Space Complexity: `O(1)`
 ## Q10: Longest Substring Without Repeating Characters
 ### My Solution
 *   Time Complexity: `O(n^3)` --> Bad
@@ -102,3 +107,10 @@ def lengthOfLongestSubstring(self, s: str) -> int:
         j += 1
     return ans;
 ```
+## Q11: Longest Palindromic Substring
+### LeetCode Solution: [Link](https://leetcode.com/problems/longest-palindromic-substring/solution/)
+*   Approach 4: Expand Around Center
+    *   Time Complexity: `O(n^2)`
+    *   Space Complexity: `O(1)`
+    *   `2n - 1` centers (***n*** elements + ***(n-1)*** gaps)
+*   Approach 5: Manacher's Algorithm (TODO)   
