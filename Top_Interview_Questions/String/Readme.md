@@ -2,7 +2,7 @@
 ## Overview
 *   **Easy:** Q1 ~ Q9
 *   **Medium:** Q10
-*   **Worth it:** Q2, Q11
+*   **Worth it:** Q2, Q6, Q9, Q11
 ## Q1: Reverse String
 *   This problem is very easy
 ## Q2: Reverse Integer
@@ -62,6 +62,45 @@ for element in s:
 *   Use the trick in Q3
 *   Time Complexity: `O(n)`
 *   Space Complexity: `O(1)`
+## Q5: Valid Palindrome
+*   This is not a good question
+## Q6: String to Integer (atoi)
+### My Solution (Good enough)
+*   Trick：`range: [-2^31, 2^31 - 1]` --> Do not calculate the boundary values --> `INT_MAX = 2147483647, INT_MIN = -2147483648`
+## Q7: Implement strStr()
+### My Solution:
+*   Call the Python API `string.find($substring)`
+*   [TODO]: KMP algorithm --> [link](https://blog.csdn.net/v_july_v/article/details/7041827)
+## Q8: Count and Say
+### My Solution (Good enough)
+*   Runtime: beat 87.5%
+*   Memory: beat 91.8%
+## Q9: Longest Common Prefix
+### My Solution:
+*   Compare each character with same index
+### Other Solution: [link](https://www.itread01.com/content/1561738803.html)
+```python
+def longestCommonPrefix(self, strs):
+    import os
+    return os.path.commonprefix(strs)
+```
+```python
+def commonprefix(m):
+    "Given a list of pathnames, returns the longest common leading component"
+    if not m: return ''
+    if not isinstance(m[0], (list, tuple)):
+        m = tuple(map(os.fspath, m))
+    s1 = min(m)
+    s2 = max(m)
+    for i, c in enumerate(s1):
+        if c != s2[i]:
+            return s1[:i]
+    return s1
+```
+*   `()` is a tuple. (Likewise, `[]` is a list.)
+*   Comparison between strings is not based on the length of strings.
+    *   Ex: A tuple `t = ('flower','flow','flight')` --> `min(t) == flight` & `max(t) == flower`
+    *   Because of the feature, we just need to compare `min(t)` and `max(t)` to get longest common prefix
 ## Q10: Longest Substring Without Repeating Characters
 ### My Solution
 *   Time Complexity: `O(n^3)` --> Bad
