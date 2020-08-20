@@ -2,7 +2,7 @@
 ## Overview
 *   **Easy:** Q1 ~ Q6
 *   **Medium:**
-*   **Worth it:** Q2, Q3, Q4
+*   **Worth it:** Q2, Q3, Q4, Q5
 ## Q1: Delete Node in a Linked List
 *   This is an idiot question.
 ## Q2: Remove Nth Node From End of List
@@ -97,3 +97,11 @@ def mergeTwoLists(self, l1, l2):
     move.next = l1 if l1 else l2
     return head.next
 ```
+## Q5: Palindrome Linked List
+### My Solution:
+*   Flow:
+    *   Reverse the second half of the linked list
+    *   Use two pointers technique to compare the value
+*   Complexity: (Good)
+    *   Time Complexity: `O(n)`
+    *   Space Complexity: `O(1)`  
