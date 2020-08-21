@@ -2,7 +2,7 @@
 ## Overview
 *   **Easy:** Q1 ~ Q6
 *   **Medium:**
-*   **Worth it:** Q2, Q3, Q4, Q5
+*   **Worth it:** Q2, Q3, Q4, Q5, Q6
 ## Q1: Delete Node in a Linked List
 *   This is an idiot question.
 ## Q2: Remove Nth Node From End of List
@@ -104,4 +104,10 @@ def mergeTwoLists(self, l1, l2):
     *   Use two pointers technique to compare the value
 *   Complexity: (Good)
     *   Time Complexity: `O(n)`
-    *   Space Complexity: `O(1)`  
+    *   Space Complexity: `O(1)`
+## Q6: Linked List Cycle (Good Question)
+### LeetCode Solution: [Link](https://leetcode.com/problems/linked-list-cycle/solution/)
+*   Approach 2: Two Pointers
+    *   Use two pointers with different speed
+    *   Time Complexity: `O(n)`
+    *   Space Complexity: `O(1)`
