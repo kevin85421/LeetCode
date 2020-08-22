@@ -1,8 +1,8 @@
 # Linked List
 ## Overview
 *   **Easy:** Q1 ~ Q6
-*   **Medium:**
-*   **Worth it:** Q2, Q3, Q4, Q5, Q6
+*   **Medium:** Q7 ~ Q9
+*   **Worth it:** Q2, Q3, Q4, Q5, Q6, Q7
 ## Q1: Delete Node in a Linked List
 *   This is an idiot question.
 ## Q2: Remove Nth Node From End of List
@@ -111,3 +111,13 @@ def mergeTwoLists(self, l1, l2):
     *   Use two pointers with different speed
     *   Time Complexity: `O(n)`
     *   Space Complexity: `O(1)`
+## Q7: Add Two Numbers
+### My Solution (Good enough)
+*   Similar with Approach 1, but my solution is in-place.
+*   Time Complexity: `O(max(m,n))` (***m, n*** is the length of ***l1, l2***)
+*   Space Complexity: `O(max(m,n))`. The length of the new list is at most `max(m,n) + 1`.
+### LeetCode Solution: [Link](https://leetcode.com/problems/add-two-numbers/solution/)
+*   Approach 1
+    *   Use a new list to store the result.
+    *   Time Complexity: `O(max(m,n))`
+    *   Space Complexity: `O(max(m,n))`. The length of the new list is at most `max(m,n) + 1`.
