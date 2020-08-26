@@ -2,7 +2,7 @@
 ## Overview
 *   **Easy:** Q1 ~ Q5
 *   **Medium:**
-*   **Worth it:** Q1, Q2
+*   **Worth it:** Q1, Q2, Q3
 ## Q1: Maximum Depth of Binary Tree
 ### My Solution
 *   Recursive (DFS)
@@ -101,4 +101,55 @@ class Solution:
             root = root.right
 
         return True
+```
+## Q3: Symmetric Tree
+### My Solution
+*   Check symmetry layer by layer
+*   Time Complexity: `O(n)` --> Complexity is OK, but traverse each node three times (childNodes/ all None/ symmetry) --> X
+*   Space Complexity: `O(n)` --> Store each node once --> This is the worst case of other methods
+### LeetCode Solution: [Link](https://leetcode.com/problems/symmetric-tree/solution/)
+*   Approach 1: Recursive
+    *   A tree is symmetric if the left subtree is a mirror reflection of the right subtree.
+        *   Their two roots have the same value.
+        *   The right subtree of each tree is a mirror reflection of the left subtree of the other tree.
+    *   Time Complexity: `O(n)`
+    *   Space Complexity: `O(n)`
+    *   TODO: Fix the initial condition, because it does each comparison twice   
+
+![color_logo_with_text](../Images/SymmetricTreeApproach1.png)
+```java
+public boolean isSymmetric(TreeNode root) {
+    return isMirror(root, root);
+}
+
+public boolean isMirror(TreeNode t1, TreeNode t2) {
+    if (t1 == null && t2 == null) return true;
+    if (t1 == null || t2 == null) return false;
+    return (t1.val == t2.val)
+        && isMirror(t1.right, t2.left)
+        && isMirror(t1.left, t2.right);
+}
+```
+*   Approach 2: Iterative
+    * Time Complexity: `O(n)`
+    * Space Complexity: `O(n)`
+    * TODO: Fix the initial condition, because it does each comparison twice  
+```java
+public boolean isSymmetric(TreeNode root) {
+    Queue<TreeNode> q = new LinkedList<>();
+    q.add(root);
+    q.add(root);
+    while (!q.isEmpty()) {
+        TreeNode t1 = q.poll();
+        TreeNode t2 = q.poll();
+        if (t1 == null && t2 == null) continue;
+        if (t1 == null || t2 == null) return false;
+        if (t1.val != t2.val) return false;
+        q.add(t1.left);
+        q.add(t2.right);
+        q.add(t1.right);
+        q.add(t2.left);
+    }
+    return true;
+}
 ```
