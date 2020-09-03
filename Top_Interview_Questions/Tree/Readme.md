@@ -158,3 +158,29 @@ public boolean isSymmetric(TreeNode root) {
 *   Use the technique in Q3 Approach 2
 *   Time Complexity: `O(n)` --> beat 96%
 *   Space Complexity: `O(n)` --> beat 78%
+## Q5: Convert Sorted Array to Binary Search Tree
+### My Solution (Good enough)
+*   Use recursive technique
+*   Time Complexity: `O(n)` --> beat 96%
+*   Space Complexity --> beat 70%
+*   Cons: Slice the list is expensive `O(len(slice))`
+### LeetCode Solution: [Link](https://leetcode.com/explore/interview/card/top-interview-questions-easy/94/trees/631/discuss/35224/Python-optimal-solution)
+*   Use recursive technique
+*   Pass indexes rather than passing slices
+*   `//` is floor division
+*   More concise than My Solution --> **Termination condition**
+```python
+class Solution(object):
+    def sortedArrayToBST(self, nums):
+        # Time: O(n)
+        # Space: O(n) in the case of skewed binary tree.
+        def convert(left, right):
+            if left > right:
+                return None
+            mid = (left + right) // 2
+            node = TreeNode(nums[mid])
+            node.left = convert(left, mid - 1)
+            node.right = convert(mid + 1, right)
+            return node
+        return convert(0, len(nums) - 1)
+```
