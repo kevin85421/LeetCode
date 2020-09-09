@@ -2,7 +2,7 @@
 ## Overview
 *   **Easy:** Q1 ~ Q4
 *   **Medium:**
-*   **Worth it:** Q3
+*   **Worth it:** Q3, Q4
 ## Q1: Fizz Buzz
 ### My Solution
 *   Same as Approach 2
@@ -72,4 +72,22 @@ public class Solution {
         return n > 0 && 1162261467 % n == 0;
     }
 }
+```
+## Q4: Roman to Integer
+### My Solution
+*   Start from the end of the string
+    *   Case1: minus
+    *   Case2: add
+*   Same as Approach 1   
+### LeetCode Solution:
+*   Approach 1: [Link](https://leetcode.com/explore/interview/card/top-interview-questions-easy/102/math/878/discuss/6542/4-lines-in-Python)
+    * **Good technique:** traverse the string from end --> `for c in s[::-1]`
+    * **Good technique:** `res, p = res - d[c] if d[c] < d[p] else res + d[c], c` 
+```python
+d = {'M':1000, 'D':500, 'C':100, 'L':50, 'X':10, 'V':5, 'I':1}
+def romanToInt(self, s):
+    res, p = 0, 'I'
+    for c in s[::-1]:
+        res, p = res - d[c] if d[c] < d[p] else res + d[c], c
+    return res
 ```
