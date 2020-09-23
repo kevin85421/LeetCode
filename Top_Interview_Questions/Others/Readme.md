@@ -1,8 +1,27 @@
 # Others
 ## Overview
 *   **Easy:** Q1 ~ Q6
-*   **Medium:**
-*   **Worth it:** Q1, Q3
+*   **Medium:** 
+*   **Worth it:** Q3, Q5
+## Q1: Numbers of 1 Bits
+### My Solution
+*   integer --> bin string --> traverse the string
+*   Inefficient (Integer --> bin string is not necessary)
+### LeetCode Solution: [Link](https://leetcode.com/problems/number-of-1-bits/solution/)
+*   Use bit operation to avoid the process (int --> bin string)
+```java
+public int hammingWeight(int n) {
+    int bits = 0;
+    int mask = 1;
+    for (int i = 0; i < 32; i++) {
+        if ((n & mask) != 0) {
+            bits++;
+        }
+        mask <<= 1;
+    }
+    return bits;
+}
+```
 ## Q3: Reverse Bits
 ### My Solution
 *   Call Python API
