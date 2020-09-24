@@ -2,7 +2,7 @@
 ## Overview
 *   **Easy:** Q1 ~ Q4
 *   **Medium:**
-*   **Worth it:** Q1
+*   **Worth it:** Q1, Q3
 ## Q1: Climbing stairs
 ### My Solution (Good enough)
 *   Same as Approach 4 (Fibonacci Number) 
@@ -50,3 +50,9 @@ public class Solution {
     }
 }
 ```
+## Q3: Maximum Subarray
+### My Solution
+*   Dynamic Programming: `max_so_far` --> max_so_far is the maximum sum of a subarray that ends at index `i`
+*   Time Complexity: `O(n)`
+*   Space Complexity: `O(1)`
+### LeetCode Solution: [Link](https://www.baeldung.com/java-maximum-subarray)
